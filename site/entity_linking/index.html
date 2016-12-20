@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Vu Anh">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>Entity Linking - Natural Language Processing</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <link href="../components/magiz-c-book/src/book.css" rel="stylesheet">
+        <link href="../components/magiz-c-course/src/course.css" rel="stylesheet">
+        <link href="../components/magiz-c-video/src/video.css" rel="stylesheet">
+        <link href="../components/magiz-c-benchmark/src/benchmark.css" rel="stylesheet">
+        <link href="../components/magiz-c-paper/src/paper.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-68978617-1', 'magizbox.com');
+            ga('send', 'pageview');
+        </script>
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">Natural Language Processing</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Docs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../task/">Tasks</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../spelling_correction/">Spelling Correction</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../word_vectors/">Word Vectors</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../ner_crf/">CRF in NER</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Entity Linking</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../application/">Applications</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Languages</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../vietnlp/">Vietnamese</a>
+</li>
+
+        
+            
+<li >
+    <a href="../englishnlp/">English</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../ner_crf/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../application/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#entity-linking">Entity Linking</a></li>
+        
+            <li><a href="#examples">Examples</a></li>
+        
+    
+        <li class="main "><a href="#architecture">Architecture</a></li>
+        
+            <li><a href="#mention-detection">Mention detection</a></li>
+        
+            <li><a href="#candidate-selection">Candidate Selection</a></li>
+        
+            <li><a href="#disambiguation">Disambiguation</a></li>
+        
+    
+        <li class="main "><a href="#references">References</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="entity-linking">Entity Linking</h2>
+<p><img alt="" src="../images/VkzMLoE.png" /></p>
+<p>In natural language processing, <strong>entity linking</strong>, <em>named entity linking (NEL)</em>, <em>named entity disambiguation (NED)</em>, <em>named entity recognition and disambiguation (NERD)</em> or <em>named entity normalization (NEN)</em> is the task of determining the identity of entities mentioned in text. More precise, it is the task of linking entity mentions to entries in a knowledge base (e.g., DBpedia, Wikipedia)</p>
+<p>Entity linking requires a knowledge base containing the entities to which entity mentions can be linked. A popular choice for entity linking on open domain text are knowledge-bases based on Wikipedia, in which each page is regarded as a named entity. NED using Wikipedia entities has been also called wikification (see Wikify! an early entity linking system] ). A knowledge base may also be induced automatically from training text or manually built.</p>
+<p>NED is different from named entity recognition (NER) in that NER identifies the occurrence or mention of a named entity in text but it does not identify which specific entity it is</p>
+<h3 id="examples">Examples</h3>
+<p>Example 1:</p>
+<p>For example, given the sentence "Paris is the capital of France", the idea is to determine that "Paris" refers to the city of Paris and not to Paris Hilton or any other entity that could be referred as "Paris".</p>
+<p><img alt="" src="../images/jBGFIzR.png" /></p>
+<p>Example 2:</p>
+<p>Give the sentence "In Second Debate, Donald Trump and HIllary Clinton Spar in Bitter, Personal Terms", the idea is to determine that "Donald Trump" refer to an American politician, and "Hillary Clinton" refer to 67th United States Secretary of State from 2009 to 2013.</p>
+<p><img alt="" src="../images/2BYjExW.png" /></p>
+<h2 id="architecture">Architecture</h2>
+<p><img alt="" src="../images/1.png" /></p>
+<ul>
+<li><em>Mention detection</em>: Identification of text snippets that can potentially be linked to entities</li>
+<li><em>Candidate selection</em>: Generating a set of candidate entities for each mention</li>
+<li><em>Disambiguation</em>: Selecting a single entity (or none) for each mention, based on the context</li>
+</ul>
+<h3 id="mention-detection">Mention detection</h3>
+<p><img alt="" src="../images/2.png" /></p>
+<p>Goal: Detect all "linkable" phrases</p>
+<p>Challenges:</p>
+<ul>
+<li>Recall oriented: Do not miss any entity that should be link</li>
+<li>Find entity name variants (e.g. "jlo" is name variant of [Jennifer Lopez])</li>
+<li>Filter out inappropriate ones (e.g. "new york" matches &gt;2k different entities)</li>
+</ul>
+<h4 id="common-approach">Common Approach</h4>
+<ol>
+<li>
+<p>Build a dictionary of entity surface forms</p>
+</li>
+<li>
+<p>entities with all names variants</p>
+</li>
+<li>
+<p>Check all document n-grams against the dictionary</p>
+</li>
+<li>
+<p>the value of n is set typically between 6 and 8</p>
+</li>
+<li>
+<p>Filter out undesired entities</p>
+</li>
+<li>
+<p>Can be done here or later in the pipeline</p>
+</li>
+</ol>
+<p><strong>Examples</strong></p>
+<p><img alt="" src="../images/3.png" /></p>
+<h3 id="candidate-selection">Candidate Selection</h3>
+<p><img alt="" src="../images/4.png" /></p>
+<p>Goal: Narrow down the space of disambiguation possibilities</p>
+<p>Balances between precision and recall (effectiveness vs. efficiency)</p>
+<p>Often approached as ranking problem: keeping only candidates above a score/rank threshold for downstream processing.</p>
+<h4 id="commonness">Commonness</h4>
+<p>Perform the ranking of candidate entities based on their overall popularity, i.e., "most command sense"</p>
+<p><img alt="" src="../images/5.png" /></p>
+<p><strong>Examples</strong></p>
+<p><img alt="" src="../images/6.png" /></p>
+<p>Commonness can be pre-computed and stored in the entity surface form dictionary. Follows a power law with a long tail of extremely unlikely senses; entities at the tail end of distribution can be safely discarded (e.g., 0.001 is sensible threshold)</p>
+<p><img alt="" src="../images/7.png" /></p>
+<h3 id="disambiguation">Disambiguation</h3>
+<p><img alt="" src="../images/8.png" /></p>
+<p>Baseline approach: most common sense</p>
+<p>Consider additional types of evidence: <em>prior importance</em> of entities and mentions, <em>contextual similarity</em> between the text surrounding the mention and the candidate entity, <em>coherence</em> among all entity linking decisions in the document.</p>
+<p>Combine these signals: using supervised learning or graph-based approaches</p>
+<p>Optionally perform pruning: reject low confidence or semantically meaning less annotations.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Entity_linking">"Entity Linking". <em>wikipedia</em></a></li>
+<li><a href="http://www.slideshare.net/krisztianbalog/entity-linking-65308055">"Entity Linking". <em>Krisztian Balog, University of Stavanger, 10th Russian Summer School in Information Retrieval</em>. 2016</a></li>
+<li><a href="http://www.slideshare.net/ikuyamada/an-endtoend-entity-linking-approach-for-tweets">"An End-to-End Entity Linking Approach for Tweets". <em>Ikuya Yamada, Hideaki Takeda, Yoshiyasu Takefuji</em>. 2015</a></li>
+</ul></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script>
+        <script src="../components/magiz-c-book/src/gspreadsheet.js"></script>
+        <script src="../components/underscore/underscore.js"></script>
+        <script src="../components/magiz-c-paper/src/paper.js"></script>
+        <script src="../components/magiz-c-course/src/course.js"></script>
+        <script src="../components/magiz-c-benchmark/src/benchmark.js"></script>
+        <script src="../components/magiz-c-benchmark/src/bootstrap-popup.js"></script>
+        <script src="../components/magiz-c-book/src/book.js"></script>
+        <script src="../components/magiz-c-video/src/video.js"></script>
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

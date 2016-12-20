@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Vu Anh">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>Vietnamese - Natural Language Processing</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <link href="../components/magiz-c-book/src/book.css" rel="stylesheet">
+        <link href="../components/magiz-c-course/src/course.css" rel="stylesheet">
+        <link href="../components/magiz-c-video/src/video.css" rel="stylesheet">
+        <link href="../components/magiz-c-benchmark/src/benchmark.css" rel="stylesheet">
+        <link href="../components/magiz-c-paper/src/paper.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-68978617-1', 'magizbox.com');
+            ga('send', 'pageview');
+        </script>
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">Natural Language Processing</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Docs <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../task/">Tasks</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../spelling_correction/">Spelling Correction</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../word_vectors/">Word Vectors</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../ner_crf/">CRF in NER</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../entity_linking/">Entity Linking</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../application/">Applications</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Languages</a>
+    <ul class="dropdown-menu">
+        
+            
+<li class="active">
+    <a href="./">Vietnamese</a>
+</li>
+
+        
+            
+<li >
+    <a href="../englishnlp/">English</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../application/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../englishnlp/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#vietnamese-nlp">Vietnamese NLP</a></li>
+        
+    
+        <li class="main "><a href="#tasks">Tasks</a></li>
+        
+            <li><a href="#dictionaries">Dictionaries</a></li>
+        
+            <li><a href="#wordnet">Wordnet</a></li>
+        
+            <li><a href="#corpus">Corpus</a></li>
+        
+            <li><a href="#word-segmentation">Word Segmentation</a></li>
+        
+            <li><a href="#pos-tagging">POS Tagging</a></li>
+        
+            <li><a href="#dependency-parsing">Dependency Parsing</a></li>
+        
+            <li><a href="#chunking">Chunking</a></li>
+        
+            <li><a href="#named-entity-recognition">Named Entity Recognition</a></li>
+        
+            <li><a href="#coreference-resolution">Coreference Resolution</a></li>
+        
+            <li><a href="#spelling-correction">Spelling Correction</a></li>
+        
+            <li><a href="#sentiment-analysis">Sentiment Analysis</a></li>
+        
+            <li><a href="#automatic-summarization">Automatic Summarization</a></li>
+        
+            <li><a href="#optical-character-recognition">Optical Character Recognition</a></li>
+        
+            <li><a href="#machine-translation">Machine Translation</a></li>
+        
+    
+        <li class="main "><a href="#groups-and-people">Groups and People</a></li>
+        
+    
+        <li class="main "><a href="#applications">Applications</a></li>
+        
+            <li><a href="#vietnam-artificial-intelligent-sytems-vais">Vietnam Artificial Intelligent Sytems (VAIS)</a></li>
+        
+            <li><a href="#vav-tro-ly-ao-cho-nguoi-viet">VAV - Trợ lý ảo cho người Việt</a></li>
+        
+    
+        <li class="main "><a href="#references">References</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="vietnamese-nlp">Vietnamese NLP</h1>
+<div class="papers" gid="147QdXmHU38Ru7tHYrANXUgvMWzek7Zxi8EkUo-m0unE"></div>
+
+<div class="clear-fix"></div>
+
+<h1 id="tasks">Tasks</h1>
+<h2 id="dictionaries">Dictionaries</h2>
+<ul>
+<li><a href="http://www.informatik.uni-leipzig.de/~duc/Dict/">The Free Vietnamese Dictionary Project. Hồ Ngọc Đức. 2004</a>, 30000 words</li>
+</ul>
+<h2 id="wordnet">Wordnet</h2>
+<ul>
+<li><a href="http://viet.wordnet.vn/wnms/editor/search/by-word/y%C3%AAu/2%7Cv">viet wordnet. 2015</a>, 67344 words</li>
+</ul>
+<h2 id="corpus">Corpus</h2>
+<p><strong><a href="https://dumps.wikimedia.org/viwiki/">viwikipedia dump. 2016</a></strong>, ~500 MB</p>
+<p><strong><a href="http://viet.jnlp.org/download-du-lieu-tu-vung-corpus" target="_blank">VNESEcorpus. 2012</a></strong>, 650.000 sentences, 10.000 articles from vietnamnet.vn, dantri.com.vn, nhanhdan.com.vn. Size: 64.59 Mb</p>
+<p><strong><a href="http://viet.jnlp.org/download-du-lieu-tu-vung-corpus" target="_blank">VNTQcorpus(small). 2012</a></strong>, 300.000 sentences, 1.000 articles from vnthuquan.net
+Size: ~35 Mb</p>
+<p><strong><a href="http://viet.jnlp.org/download-du-lieu-tu-vung-corpus" target="_blank">VNTQcorpus(big). 2012</a></strong>, 1.750.000 sentences, 13.000 articles from vnthuquan.net, Size: ~240 Mb</p>
+<h2 id="word-segmentation">Word Segmentation</h2>
+<p>sources <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></p>
+<h3 id="data">Data</h3>
+<ul>
+<li>VLSP 2013: Word Segmentation Task, 77000 sentences</li>
+<li><a href="http://www.jaist.ac.jp/~hieuxuan/vnwordseg/data/">Data from JVnSegmenter</a>, 7800 sentences</li>
+</ul>
+<h3 id="benchmark">Benchmark</h3>
+<p><big><b>Unit: F1 (%)</b></big></p>
+<div class="benchmarks" gid="1aaKrh8UL6ETdV7TXFR63oip5LVDwD08nSNwRkdNiPRg"></div>
+
+<div class="clearfix"></div>
+
+<h3 id="related-readings">Related Readings</h3>
+<div class="papers" gid="1OAfZGyYyolDdONqnrxq_QMD-KYDZWfejGBjWJXtj0mk"></div>
+
+<div class="clear-fix"></div>
+
+<h2 id="pos-tagging">POS Tagging</h2>
+<p>sources <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></p>
+<h3 id="data_1">Data</h3>
+<ul>
+<li>[N09] VLSP 2013: POS Tagging Task, 270000 sentences</li>
+</ul>
+<h3 id="benchmark_1">Benchmark</h3>
+<p><big><b>Unit: F1 (%)</b></big></p>
+<div class="benchmarks" gid="1zJkeL2LveJkSuSCh3668mLwAPUZDWRFvEmsSpYxNNM0"></div>
+
+<div class="clearfix"></div>
+
+<h3 id="related-readings_1">Related Readings</h3>
+<div class="papers" gid="180S0p1WgCiiMkrMOuLANQuz6j7kwR2oShRdL-xFSgUk"></div>
+
+<div class="clear-fix"></div>
+
+<h2 id="dependency-parsing">Dependency Parsing</h2>
+<p>sources <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></p>
+<h3 id="benchmark_2">Benchmark</h3>
+<p><big><b>Unit: %</b></big></p>
+<div class="benchmarks" gid="1IrtBQ4ncFxq1cRRyJtLYdDWNBNjxTuAZ3nA_ji2QMnY" scores="UAS,LAS"></div>
+
+<div class="clearfix"></div>
+
+<h3 id="related-readings_2">Related Readings</h3>
+<div class="papers" gid="1_oIYHf__jKcMvD5pkzjDtSirTr45wWVZe3vsz_K_ZKw"></div>
+
+<div class="clear-fix"></div>
+
+<h2 id="chunking">Chunking</h2>
+<p>sources <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></p>
+<h3 id="data_2">Data</h3>
+<ul>
+<li><a href="https://github.com/lupanh/vTools/blob/master/data/Chunk/vi-chunk.train">Training data from vTools</a></li>
+</ul>
+<h3 id="benchmark_3">Benchmark</h3>
+<p><big><b>Unit: %</b></big></p>
+<div class="benchmarks" gid="12ugmnbKfVWVmb8gAW-B1MjMjzVb8SKiZlLObvWB3aM4"></div>
+
+<div class="clearfix"></div>
+
+<h3 id="related-readings_3">Related Readings</h3>
+<div class="papers" gid="1eACGhQm8BEEqJcru5SH7x_lv-tks4k7Y4HDsoCJVC5g"></div>
+
+<div class="clear-fix"></div>
+
+<h2 id="named-entity-recognition">Named Entity Recognition</h2>
+<p>sources <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></p>
+<h3 id="data_3">Data</h3>
+<ul>
+<li>VLSP 2016: NER Task, 313 documents, 19160 sentences</li>
+</ul>
+<h3 id="benchmark_4">Benchmark</h3>
+<p><big><b>Unit: %</b></big></p>
+<div class="benchmarks" gid="1BltTKewB7COHesGcaFT1WvGUvBN8jomKFCIY7Mcd2WU"></div>
+
+<div class="clearfix"></div>
+
+<h3 id="related-readings_4">Related Readings</h3>
+<div class="papers" gid="1tKFAWOqcJKeP4neCSqm8GTafMI2EczYPpS0PEAmW7Rg"></div>
+
+<div class="clear-fix"></div>
+
+<h2 id="coreference-resolution">Coreference Resolution</h2>
+<p>sources <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></p>
+<h3 id="benchmark_5">Benchmark</h3>
+<p><big><b>Unit: %</b></big></p>
+<div class="benchmarks" gid="1bGlmxaKjU57UbTcKVU0N2A_8hMhS0rhC_3YldjOHEY8"></div>
+
+<div class="clearfix"></div>
+
+<h3 id="related-readings_5">Related Readings</h3>
+<div class="papers" gid="18JbPXphM9HO6HJeOsb52ZislZU8URYL061GyV_I03vQ"></div>
+
+<div class="clear-fix"></div>
+
+<h2 id="spelling-correction">Spelling Correction</h2>
+<h3 id="benchmark_6">Benchmark</h3>
+<div class="benchmarks" gid="1a9sT18lHRYehSmggpCz2w-TjMvXpWYdcWnLXKwxhTTQ"></div>
+
+<div class="clearfix"></div>
+
+<h2 id="sentiment-analysis">Sentiment Analysis</h2>
+<h3 id="data_4">Data</h3>
+<ul>
+<li><a href="https://sourceforge.net/projects/vietsentiwordne/">VietSentiWordNet</a>, 1000 synsets</li>
+<li>VLSP 2016: OM Task, 3600 sentences</li>
+</ul>
+<h3 id="benchmark_7">Benchmark</h3>
+<div class="benchmarks" gid="1gGINig0rVWNm9tAq8NPm-P4rlnJrPyUC1nYI9FruabM"></div>
+
+<div class="clearfix"></div>
+
+<h3 id="related-readings_6">Related Readings</h3>
+<div class="papers" gid="1xwkesIyYKDXfcXcLBA7BlQ-AObvrcxp0mBeHyJftxO4"></div>
+
+<div class="clear-fix"></div>
+
+<h2 id="automatic-summarization">Automatic Summarization</h2>
+<h3 id="data_5">Data</h3>
+<ul>
+<li><a href="https://github.com/lupanh/VietnameseMDS">200 Cụm văn bản tiếng Việt dùng cho tóm tắt đa văn bản. 2012</a></li>
+</ul>
+<h2 id="optical-character-recognition">Optical Character Recognition</h2>
+<h3 id="data_6">Data</h3>
+<ul>
+<li><a href="https://code.google.com/archive/p/sapphire-ocr/downloads">Dữ liệu cho bài toán nhận dạng chữ viết tay tiếng Việt. 2011</a></li>
+</ul>
+<h2 id="machine-translation">Machine Translation</h2>
+<h3 id="benchmark_8">Benchmark</h3>
+<div class="benchmarks" gid="1Mepg7-uryVDpJhLhD7ULlFulgWyqC6oIHRpTAqpglWc"></div>
+
+<div class="clearfix"></div>
+
+<h1 id="groups-and-people">Groups and People</h1>
+<p><strong>Groups</strong></p>
+<ul>
+<li><a href="http://mica.edu.vn/">mica (2002-now)</a></li>
+<li><a href="http://vlsp.org.vn/">vlsp (2006-now)</a></li>
+<li><a href="http://vnlp.net/">DSKTLab (2010-now)</a></li>
+<li><a href="http://kde.soict.hust.edu.vn/">KDE lab, (2014-now)</a></li>
+</ul>
+<p><strong>People</strong></p>
+<ul>
+<li><a href="http://www.coltech.vnu.edu.vn/~thuyhq/">Ha Quang Thuy</a></li>
+<li><a href="http://www.jaist.ac.jp/~bao/">Ho Tu Bao</a></li>
+<li><a href="http://mim.hus.vnu.edu.vn/phuonglh/">Le Hong Phuong</a></li>
+<li><a href="http://soict.hust.edu.vn/index.php/bo-mon-trung-tam/he-thong-thong-tin/can-bo/235-pgs-ts-le-thanh-huong">Le Thanh Huong</a></li>
+<li><a href="http://dblp.uni-trier.de/pers/hd/l/Luong:Chi_Mai">Luong Chi Mai</a></li>
+<li><a href="http://www.dais.is.tohoku.ac.jp/~ncamtu/index.htm">Nguyen Cam Tu</a></li>
+<li><a href="http://lamda.nju.edu.cn/nguyenct/">Nguyen Cam Tu</a></li>
+<li><a href="http://web.science.mq.edu.au/~dqnguyen/">Nguyen Dat Quoc</a></li>
+<li><a href="http://soict.hust.edu.vn/index.php/bo-mon-trung-tam/he-thong-thong-tin/can-bo/227-ts-nguyen-kiem-hieu">Nguyen Kiem Hieu</a></li>
+<li><a href="http://soict.hust.edu.vn/index.php/bo-mon-trung-tam/he-thong-thong-tin/can-bo/227-ts-nguyen-kiem-hieu">Nguyen Thi Minh Huyen</a></li>
+<li><a href="https://sites.google.com/site/pxhieu/">Phan Xuan Hieu</a></li>
+<li><a href="http://is.hust.edu.vn/~khoattq/">Than Quang Khoat</a></li>
+<li><a href="http://fit.uet.vnu.edu.vn/gioi-thieu/giang-vien/vutm/">Tran Mai Vu</a></li>
+</ul>
+<h1 id="applications">Applications</h1>
+<h2 id="vietnam-artificial-intelligent-sytems-vais"><a href="http://vais.vn/index.html">Vietnam Artificial Intelligent Sytems (VAIS)</a></h2>
+<p>Time: 2016</p>
+<ul>
+<li><em>VAIS-TTS</em>: the speech synthesis service. Our system provides both northern and southern region voices with high quality, high availability, and easy-to-access service for everyone!.</li>
+<li><em>VAIS-MT</em>: : the machine translation service. Our system provides natural machine translation results between Vietnamese-English languages by utilizing the state-of-the-art neural network technique.</li>
+</ul>
+<h2 id="vav-tro-ly-ao-cho-nguoi-viet"><a href="https://play.google.com/store/apps/details?id=uet.mdnteam.vav">VAV - Trợ lý ảo cho người Việt</a></h2>
+<p>Time: Nov 2015 - now</p>
+<p><strong>MDN-Team, Khoa CNTT, Trường ĐH Công nghệ, ĐHQG HN Tools</strong></p>
+<p><em>Bạn đang nghĩ đến một ứng dụng thông minh trên di động cho phép bạn tương tác bằng giọng nói để hẹn chuông báo thức, đặt lịch cho một cuộc họp, bật định vị, gọi điện cho ai đó, truy cập một trang web bất kỳ, tìm đường trên bản đồ, định vị cây ATM của một ngân hàng nào đó gần với bạn, hay thưởng thức một bản nhạc mình yêu thích … Ứng dụng Trợ lý ảo VAV chính là câu trả lời cho bạn. Được thiết kế và phát triển dựa trên các kỹ thuật trí tuệ nhân tạo (học máy, phân tích và hiểu ngôn ngữ tự nhiên), VAV có thể hiểu được ý định của bạn dù bạn diễn đạt câu lệnh của mình theo nhiều cách khác nhau mà không cần tuân theo bất kỳ khuôn mẫu nào cho trước. Những gì VAV hướng tới là trở thành một trợ lý ảo thông minh giúp bạn thực hiện những điều mình muốn và là một người đồng hành thân thiện, dí dỏm bên bạn.</em></p>
+<h1 id="references">References</h1>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="https://drive.google.com/file/d/0B6LYda0EhWbSelc2VTlZVFZia1E/view?usp=sharing">2016, Big Challenges for Data Scientists at VCCORP</a>&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script>
+        <script src="../components/magiz-c-book/src/gspreadsheet.js"></script>
+        <script src="../components/underscore/underscore.js"></script>
+        <script src="../components/magiz-c-paper/src/paper.js"></script>
+        <script src="../components/magiz-c-course/src/course.js"></script>
+        <script src="../components/magiz-c-benchmark/src/benchmark.js"></script>
+        <script src="../components/magiz-c-benchmark/src/bootstrap-popup.js"></script>
+        <script src="../components/magiz-c-book/src/book.js"></script>
+        <script src="../components/magiz-c-video/src/video.js"></script>
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
