@@ -14,6 +14,7 @@ pages:
   - "Languages":
     - "Vietnamese": 'vietnlp.md'
     - "English": 'englishnlp.md'
+- "<span class='fa fa-rss'></span> News": "feed.md"
 
 extra_css:
   - components/magiz-c-book/src/book.css
@@ -21,6 +22,7 @@ extra_css:
   - components/magiz-c-video/src/video.css
   - components/magiz-c-benchmark/src/benchmark.css
   - components/magiz-c-paper/src/paper.css
+  - components/magiz-c-feed/src/feed.css
 
 extra_javascript:
   - components/magiz-c-book/src/gspreadsheet.js
@@ -31,6 +33,7 @@ extra_javascript:
   - components/magiz-c-benchmark/src/bootstrap-popup.js
   - components/magiz-c-book/src/book.js
   - components/magiz-c-video/src/video.js
+  - components/magiz-c-feed/src/feed.js
   - http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 markdown_extensions:

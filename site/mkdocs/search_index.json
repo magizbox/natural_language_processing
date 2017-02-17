@@ -559,6 +559,16 @@
             "location": "/englishnlp/#benchmark_4", 
             "text": "Raw Version of TREC QA  ( score: MAP, MRR )    Clean Version of TREC QA  ( score: MAP, MRR )", 
             "title": "Benchmark"
+        }, 
+        {
+            "location": "/feed/", 
+            "text": "Latest News", 
+            "title": "<span class='fa fa-rss'></span> News"
+        }, 
+        {
+            "location": "/feed/#latest-news", 
+            "text": "", 
+            "title": "Latest News"
         }
     ]
 }

@@ -3,8 +3,8 @@
 
     
     <url>
-     <loc>None/</loc>
-     <lastmod>2016-12-20</lastmod>
+     <loc>/</loc>
+     <lastmod>2017-02-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,47 +12,55 @@
     
         
     <url>
-     <loc>None/task/</loc>
-     <lastmod>2016-12-20</lastmod>
+     <loc>/task/</loc>
+     <lastmod>2017-02-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/spelling_correction/</loc>
-     <lastmod>2016-12-20</lastmod>
+     <loc>/spelling_correction/</loc>
+     <lastmod>2017-02-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/word_vectors/</loc>
-     <lastmod>2016-12-20</lastmod>
+     <loc>/word_vectors/</loc>
+     <lastmod>2017-02-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/ner_crf/</loc>
-     <lastmod>2016-12-20</lastmod>
+     <loc>/ner_crf/</loc>
+     <lastmod>2017-02-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/entity_linking/</loc>
-     <lastmod>2016-12-20</lastmod>
+     <loc>/entity_linking/</loc>
+     <lastmod>2017-02-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/application/</loc>
-     <lastmod>2016-12-20</lastmod>
+     <loc>/application/</loc>
+     <lastmod>2017-02-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None</loc>
+     <loc></loc>
      <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
+    
+
+    
+    <url>
+     <loc>/feed/</loc>
+     <lastmod>2017-02-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
     
 
 </urlset>
