@@ -116,9 +116,46 @@ Semantically (Semeval 2012 task 2)
 * \( x_{shirt} - x_{clothing} \approx x_{chair} - x_{furniture} \)
 * \( x_{king} - x_{man} \approx x_{queen} - x_{woman} \)
 
+## GloVe
+
+[Project](https://nlp.stanford.edu/projects/glove/)
+- [Highlights](https://nlp.stanford.edu/projects/glove/)
+- [Training](https://nlp.stanford.edu/projects/glove/)
+- [Model Overview](https://nlp.stanford.edu/projects/glove/)
+
+GloVe is an unsupervised learning algorithm for obtaining vector representations for words. Training is performed on aggregated global word-word co-occurrence statistics from a corpus, and the resulting representations showcase interesting linear substructures of the word vector space.
+
+## Pre-trained Model
+
+**[fastText](https://github.com/facebookresearch/fastText/)**
+
+Pre-trained word vectors for `294 languages`, trained on *Wikipedia* using fastText. These vectors in dimension 300 were obtained using the skip-gram model described in Bojanowski et al. (2016) with default parameters.
+
+**[glove](https://nlp.stanford.edu/projects/glove/)**
+
+Pre-trained word vectors. This data is made available under the Public Domain Dedication and License v1.0 whose full text can be found at: http://www.opendatacommons.org/licenses/pddl/1.0/.
+
+Language: `English`
+
+* *Wikipedia 2014* + *Gigaword 5* (6B tokens, 400K vocab, uncased, 50d, 100d, 200d, & 300d vectors, 822 MB download): [glove.6B.zip](http://nlp.stanford.edu/data/glove.6B.zip)
+* *Common Crawl* (42B tokens, 1.9M vocab, uncased, 300d vectors, 1.75 GB download): [glove.42B.300d.zip](http://nlp.stanford.edu/data/glove.42B.300d.zip)
+* *Common Crawl* (840B tokens, 2.2M vocab, cased, 300d vectors, 2.03 GB download): [glove.840B.300d.zip](http://nlp.stanford.edu/data/glove.840B.300d.zip)
+* *Twitter* (2B tweets, 27B tokens, 1.2M vocab, uncased, 25d, 50d, 100d, & 200d vectors, 1.42 GB download): [glove.twitter.27B.zip](http://nlp.stanford.edu/data/glove.twitter.27B.zip)
+
+**[word2vec-GoogleNews-vectors](https://github.com/mmihaltz/word2vec-GoogleNews-vectors)**
+
+Language: `English`
+
+Pre-trained *Google News* corpus (3 billion running words) word vector model (3 million 300-dimension English word vectors).
+
+## Word Analogies
+
+Test for linear relationships, examined by Mikolov et at. (2014)
+
 ## Suggested Readings
 
-* [Simple Word Vector representations: word2vec, GloVe](http://cs224d.stanford.edu/lectures/CS224d-Lecture2.pdf)
-* [Distributed Representations of Words and Phrases
-and their Compositionality](http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf)
-* [Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/pdf/1301.3781.pdf)
+* Simple Word Vector representations: word2vec, GloVe. [cs224d.stanford.edu](http://cs224d.stanford.edu/lectures/CS224d-Lecture2.pdf). Last Accessed: 2017-02-01.
+* FastText and Gensim word embeddings. [rare-technologies.com](https://rare-technologies.com/fasttext-and-gensim-word-embeddings/). Last Accessed: 2016-08-31.
+* Distributed Representations of Words and Phrases
+and their Compositionality. [papers.nips.cc](http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf). Last Accessed: 2013-12-05.
+* Efficient Estimation of Word Representations in Vector Space. [arxiv.org](https://arxiv.org/pdf/1301.3781.pdf). Last Accessed: 2013-01-16

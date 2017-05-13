@@ -137,6 +137,9 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#discrete-representation">Discrete Representation</a></li>
         <li class="main "><a href="#word2vec">Word2Vec</a></li>
+        <li class="main "><a href="#glove">GloVe</a></li>
+        <li class="main "><a href="#pre-trained-model">Pre-trained Model</a></li>
+        <li class="main "><a href="#word-analogies">Word Analogies</a></li>
         <li class="main "><a href="#suggested-readings">Suggested Readings</a></li>
     </ul>
 </div></div>
@@ -255,12 +258,36 @@ list(panda.closure(hyper))
 <script type="math/tex"> x_{king} - x_{man} \approx x_{queen} - x_{woman} </script>
 </li>
 </ul>
+<h2 id="glove">GloVe</h2>
+<p><a href="https://nlp.stanford.edu/projects/glove/">Project</a>
+- <a href="https://nlp.stanford.edu/projects/glove/">Highlights</a>
+- <a href="https://nlp.stanford.edu/projects/glove/">Training</a>
+- <a href="https://nlp.stanford.edu/projects/glove/">Model Overview</a></p>
+<p>GloVe is an unsupervised learning algorithm for obtaining vector representations for words. Training is performed on aggregated global word-word co-occurrence statistics from a corpus, and the resulting representations showcase interesting linear substructures of the word vector space.</p>
+<h2 id="pre-trained-model">Pre-trained Model</h2>
+<p><strong><a href="https://github.com/facebookresearch/fastText/">fastText</a></strong></p>
+<p>Pre-trained word vectors for <code>294 languages</code>, trained on <em>Wikipedia</em> using fastText. These vectors in dimension 300 were obtained using the skip-gram model described in Bojanowski et al. (2016) with default parameters.</p>
+<p><strong><a href="https://nlp.stanford.edu/projects/glove/">glove</a></strong></p>
+<p>Pre-trained word vectors. This data is made available under the Public Domain Dedication and License v1.0 whose full text can be found at: http://www.opendatacommons.org/licenses/pddl/1.0/.</p>
+<p>Language: <code>English</code></p>
+<ul>
+<li><em>Wikipedia 2014</em> + <em>Gigaword 5</em> (6B tokens, 400K vocab, uncased, 50d, 100d, 200d, &amp; 300d vectors, 822 MB download): <a href="http://nlp.stanford.edu/data/glove.6B.zip">glove.6B.zip</a></li>
+<li><em>Common Crawl</em> (42B tokens, 1.9M vocab, uncased, 300d vectors, 1.75 GB download): <a href="http://nlp.stanford.edu/data/glove.42B.300d.zip">glove.42B.300d.zip</a></li>
+<li><em>Common Crawl</em> (840B tokens, 2.2M vocab, cased, 300d vectors, 2.03 GB download): <a href="http://nlp.stanford.edu/data/glove.840B.300d.zip">glove.840B.300d.zip</a></li>
+<li><em>Twitter</em> (2B tweets, 27B tokens, 1.2M vocab, uncased, 25d, 50d, 100d, &amp; 200d vectors, 1.42 GB download): <a href="http://nlp.stanford.edu/data/glove.twitter.27B.zip">glove.twitter.27B.zip</a></li>
+</ul>
+<p><strong><a href="https://github.com/mmihaltz/word2vec-GoogleNews-vectors">word2vec-GoogleNews-vectors</a></strong></p>
+<p>Language: <code>English</code></p>
+<p>Pre-trained <em>Google News</em> corpus (3 billion running words) word vector model (3 million 300-dimension English word vectors).</p>
+<h2 id="word-analogies">Word Analogies</h2>
+<p>Test for linear relationships, examined by Mikolov et at. (2014)</p>
 <h2 id="suggested-readings">Suggested Readings</h2>
 <ul>
-<li><a href="http://cs224d.stanford.edu/lectures/CS224d-Lecture2.pdf">Simple Word Vector representations: word2vec, GloVe</a></li>
-<li><a href="http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">Distributed Representations of Words and Phrases
-and their Compositionality</a></li>
-<li><a href="https://arxiv.org/pdf/1301.3781.pdf">Efficient Estimation of Word Representations in Vector Space</a></li>
+<li>Simple Word Vector representations: word2vec, GloVe. <a href="http://cs224d.stanford.edu/lectures/CS224d-Lecture2.pdf">cs224d.stanford.edu</a>. Last Accessed: 2017-02-01.</li>
+<li>FastText and Gensim word embeddings. <a href="https://rare-technologies.com/fasttext-and-gensim-word-embeddings/">rare-technologies.com</a>. Last Accessed: 2016-08-31.</li>
+<li>Distributed Representations of Words and Phrases
+and their Compositionality. <a href="http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">papers.nips.cc</a>. Last Accessed: 2013-12-05.</li>
+<li>Efficient Estimation of Word Representations in Vector Space. <a href="https://arxiv.org/pdf/1301.3781.pdf">arxiv.org</a>. Last Accessed: 2013-01-16</li>
 </ul></div>
         </div>
 
