@@ -1,0 +1,91 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/distill.css">
+<link rel="stylesheet" href="css/font-awesome-4.5.0.css">
+<link rel="shortcut icon" href="./favicon.ico">
+<script src="js/distill_v1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.7.1/showdown.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/front-matter">
+  title: "Natural Language Processing"
+  description: ""
+  authors:
+  - Vu Anh: http://magizbox.com/users/rain1024
+  affiliations:
+  - Magizbox: http://magizbox.com
+</script>
+
+<dt-header>
+<div class="content l-page">
+<a href="./" class="logo">
+<i class="fa fa-magic" aria-hidden="true"></i>
+Natural Language Processing
+</a>
+</div>
+</dt-header>
+
+
+<dt-article class="centered">
+<h1>Spelling Correction</h1>
+<dt-byline></dt-byline>
+
+<div class="markdown">
+For instance, we may wish to retrieve documents containing the term carrot when the user types the query carot. Google reports (http://www.google.com/jobs/britney.html) that the following are all treated as misspellings of the query britney spears: britian spears, britney's spears, brandy spears and prittany spears
+
+
+We look at two steps to solving this problem: the first based on *edit distance* and the second based on *k-gram overlap*. Before getting into the algorithmic details of these methods, we first review how search engines provide spell-correction as part of a user experience.
+
+##  Implementing spelling correction
+
+There are two basic principles underlying most spelling correction algorithms.
+
+1. Of various alternative correct spellings for a mis-spelled query, choose the *nearest* one. This demands that we have a notion of nearness or proximity between a pair of queries. 
+2. When two correctly spelled queries are tied (or nearly tied), select the one that is *more common*. For instance, grunt and grant both seem equally plausible as corrections for grnt. Then, the algorithm should choose the more common of grunt and grant as the correction. The simplest notion of more common is to consider the number of occurrences of the term in the collection; thus if grunt occurs more often than grant, it would be the chosen correction. A different notion of more common is employed in many search engines, especially on the web. The idea is to use the correction that is most common among queries typed in by other users. The idea here is that if grunt is typed as a query more often than grant, then it is more likely that the user who typed grnt intended to type the query grunt.
+
+## Corpus
+
+[Birkbeck spelling error corpus](http://ota.ox.ac.uk/headers/0643.xml)
+
+## References
+
+* [How to Write a Spelling Corrector. _Peter Norvig_. 2007](http://norvig.com/spell-correct.html)
+* [Statistical Natural Language Processing in Python. _Peter Norvig_. 2007](http://nbviewer.jupyter.org/url/norvig.com/ipython/How%20to%20Do%20Things%20with%20Words.ipynb)
+* [Spelling correction. _Introduction to Information Retrieval_. 2008](http://nlp.stanford.edu/IR-book/html/htmledition/spelling-correction-1.html)
+</div> <!-- end .markdown -->
+
+</dt-article>
+
+
+<dt-footer>
+<div class="l-page">
+<div class="description">
+<a href="http://magizbox.com" class="logo"> <i class="fa fa-magic" aria-hidden="true"></i> magizbox</a> is dedicated to clear explanations of computer science, data science and software development.
+</div>
+<div class="nav">
+<a href="./">Natural Language Processing documentation</a>
+<a href="http://magizbox.com">Magizbox</a>
+<a href="https://github.com/magizbox/deep_learning">Github</a>
+</div>
+</div>
+</dt-footer>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-68978617-1', 'magizbox.com');
+        ga('send', 'pageview');
+    </script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['\\(', '\\)'], ['$','$']]}
+});
+</script>
+
+<script src="js/markdown.js"></script>
